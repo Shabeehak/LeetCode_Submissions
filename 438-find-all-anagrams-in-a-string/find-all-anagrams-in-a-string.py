@@ -1,21 +1,27 @@
 class Solution(object):
     def findAnagrams(self, s, p):
-        if len(s)<len(p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: List[int]
+        """
+        window_size = len(p)
+        if len(s)<window_size:
             return []
+        p_count = [0]*26
+        x_count = [0]*26
         result = []
-        p_count = [0] * 26
-        window_count = [0] * 26
         for ch in p:
             p_count[ord(ch)-ord('a')]+=1
-        left = 0
-        right = 0
-        k = len(p)
+        
+        left, right = 0, 0
+        
         while right<len(s):
-            window_count[ord(s[right])-ord('a')]+=1
+            x_count[ord(s[right])-ord('a')]+=1
             right+=1
-            if right-left==k:
-                if window_count == p_count:
+            if right - left == window_size:
+                if p_count == x_count:
                     result.append(left)
-                window_count[ord(s[left])-ord('a')]-=1
+                x_count[ord(s[left])-ord('a')]-=1
                 left +=1
         return result
