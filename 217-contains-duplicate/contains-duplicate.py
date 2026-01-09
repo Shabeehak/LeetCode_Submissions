@@ -4,4 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        return len(nums) != len(set(nums))
+        nums.sort()
+        if len(nums)>1:
+            for i in range(1,len(nums)):
+                if nums[i]==nums[i-1]:
+                    return True
+            return False
+        return False
