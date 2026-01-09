@@ -5,9 +5,9 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        prev_map = dict() #hash mapping
-        for i, num in enumerate(nums):
-            if target-num in prev_map:
-                return [i, prev_map[target-num]]
+        prev_map = dict()
+        for i, val in enumerate(nums):
+            if target-val in prev_map:
+                return (i, prev_map[target-val])
             else:
-                prev_map[num]=i
+                prev_map[val]=i
