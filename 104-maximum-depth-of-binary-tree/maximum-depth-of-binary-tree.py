@@ -10,15 +10,6 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: int
         """
-        max_depth = [0]
-        global max_depth
-        def dfs(node, depth):
-            if not node:
-                return
-
-            max_depth[0] = max(max_depth[0], depth)
-            dfs(node.left, depth + 1)
-            dfs(node.right, depth + 1)
-
-        dfs(root, 1)
-        return max_depth[0]
+        if not root:
+            return 0
+        return 1+max(self.maxDepth(root.left), self.maxDepth(root.right))
