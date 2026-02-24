@@ -10,19 +10,14 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
-        if not root:
-            return []
-        result=[]             #main list to return
-        queue = deque([root]) #control over level
-        while queue:
-            level = []        #sub list to add main list
-            level_size = len(queue)
-            for _ in range(level_size):
-                node = queue.popleft()
-                level.append(node.val)   #here sub list created
-                if node.left:
-                    queue.append(node.left)   #here next level number of count and value taken
-                if node.right:
-                    queue.append(node.right)   #here next level number of count and value taken
-            result.append(level)  #here main list getting sub list
+        result = []
+        def dfs(node, depth):
+            if not node:
+                return
+            if len(result)==depth:    #create nested list in each level
+                result.append([])
+            result[depth].append(node.val)   #add value based on level
+            dfs(node.left, depth+1)
+            dfs(node.right,depth+1)
+        dfs(root,0)
         return result
