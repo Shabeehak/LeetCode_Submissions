@@ -5,6 +5,8 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
+        import heapq
         from collections import Counter
         count = Counter(nums)
-        return [item for item, _ in heapq.nlargest(k,count.items(), key = lambda x:x[1])]
+        return [num for num,_ in heapq.nlargest(k, count.items(), key=lambda x: x[1])]
+        
