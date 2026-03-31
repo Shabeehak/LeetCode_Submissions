@@ -1,3 +1,4 @@
+from collections import deque
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, val=0, left=None, right=None):
@@ -10,14 +11,19 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
+        if not root:
+            return []
         result = []
-        def dfs(node, depth):
-            if not node:
-                return
-            if len(result)==depth:    #create nested list in each level
-                result.append([])
-            result[depth].append(node.val)   #add value based on level
-            dfs(node.left, depth+1)
-            dfs(node.right,depth+1)
-        dfs(root,0)
+        queue = deque([root])
+        while queue:
+            level = []
+            level_size = len(queue)
+            for _ in range(level_size):
+                node = queue.popleft()
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            result.append(level)
         return result
