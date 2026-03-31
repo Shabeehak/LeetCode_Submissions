@@ -8,20 +8,18 @@ class Solution(object):
         window_size = len(p)
         if len(s)<window_size:
             return []
-        p_count = [0]*26
-        x_count = [0]*26
+        p_count=[0]*26
+        s_count=[0]*26
+        for c in p:
+            p_count[ord(c)-ord('a')]+=1
         result = []
-        for ch in p:
-            p_count[ord(ch)-ord('a')]+=1
-        
         left, right = 0, 0
-        
         while right<len(s):
-            x_count[ord(s[right])-ord('a')]+=1
+            s_count[ord(s[right])-ord('a')]+=1
             right+=1
-            if right - left == window_size:
-                if p_count == x_count:
+            if right-left==window_size:
+                if p_count == s_count:
                     result.append(left)
-                x_count[ord(s[left])-ord('a')]-=1
+                s_count[ord(s[left])-ord('a')]-=1
                 left +=1
-        return result
+        return result    
