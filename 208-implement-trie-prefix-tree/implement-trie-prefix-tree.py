@@ -13,7 +13,8 @@ class Trie(object):
             if char not in node:
                 node[char]={}
             node = node[char]
-        node['#'] = True        
+        node['#'] = None
+
     def search(self, word):
         """
         :type word: str
@@ -24,8 +25,8 @@ class Trie(object):
             if char not in node:
                 return False
             node = node[char]
-        return '#' in node
-        
+        return "#" in node
+
 
     def startsWith(self, prefix):
         """
@@ -38,7 +39,6 @@ class Trie(object):
                 return False
             node = node[char]
         return True
-        
 
 
 # Your Trie object will be instantiated and called as such:
