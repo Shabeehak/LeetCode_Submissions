@@ -8,5 +8,4 @@ class Solution(object):
         import heapq
         from collections import Counter
         count = Counter(nums)
-        return [num for num,_ in heapq.nlargest(k, count.items(), key=lambda x: x[1])]
-        
+        return [num for num, _ in heapq.nlargest(k, count.items(), key = lambda x: x[1])]
