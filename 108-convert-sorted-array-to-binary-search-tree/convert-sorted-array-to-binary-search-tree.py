@@ -10,12 +10,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: Optional[TreeNode]
         """
-        def covrt_bbst(nums):
+        def bs_convert(nums):
             if not nums:
                 return None
             mid = len(nums)//2
             node = TreeNode(nums[mid])
-            node.left = covrt_bbst(nums[:mid])
-            node.right = covrt_bbst(nums[mid+1:])
+            node.left = bs_convert(nums[:mid])
+            node.right = bs_convert(nums[mid+1:])
             return node
-        return covrt_bbst(nums)
+        return bs_convert(nums)
