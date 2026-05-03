@@ -15,9 +15,9 @@ class Solution(object):
         result = [None]
         def inorder_traversal(node):
             if not node:
-                return 
+                return
             inorder_traversal(node.left)
-            count[0]+=1
+            count[0] +=1
             if count[0]==k:
                 result[0]=node.val
                 return
