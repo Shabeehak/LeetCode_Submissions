@@ -13,8 +13,8 @@ class Solution(object):
         """
         if not root:
             return []
-        result = []
         queue = deque([root])
+        result = []
         while queue:
             level = []
             level_size = len(queue)
